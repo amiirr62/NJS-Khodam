@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/user.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <a href="/">Back</a>
+    
+    <H1><%=user.name %></H1>
+    
+        <form action="/<%= user.id %>?method=PUT" method="POST">
+            <input type="number" placeholder="id" name="id" value="<%= user.id %>">
+            <input type="text" placeholder="name" name="name" value="<%= user.name %>">
+            <input type="text" placeholder="username" name="username" value="<%= user.username %>">
+            <input type="text" placeholder="password" name="password" value="<%= user.password %>">
+            <input type="number" placeholder="age" name="age" value="<%= user.age %>">
+            <input type="submit" value="Update">
+                  
+        </form>
+        
+</body>
+</html>

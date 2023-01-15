@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/user.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <H1>See ALL Users</H1>
+<div>
+    <div>
+        <% if(errors.length){ %>
+            <% errors.forEach(err =>{ %>
+                <ul>
+                    <li><%= err.msg %></li>
+                </ul>
+            <% }) %>
+        <% } %>
+      
+    </div>
+    <form action="/" method="POST">
+        <input type="number" placeholder="id" name="id">
+        <input type="text" placeholder="name" name="name">
+        <input type="text" placeholder="username" name="username">
+        <input type="text" placeholder="password" name="password">
+        <input type="number" placeholder="age" name="age">
+        <input type="submit" value="Add">
+    </form>
+</div>
+
+<br>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>username</th>
+                <th>password</th>
+                <th>age</th>
+                <th>operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% User.forEach(user => { %>
+                <tr>
+                    <td><%= user.id %></td>
+                    <td><%= user.name %></td>
+                    <td><%= user.username %></td>
+                    <td><%= user.password %></td>
+                    <td><%= user.age %></td>
+                    <td>
+                        <form action="/<%= user.id %>?method=DELETE" method="POST" >
+                            <input type="submit" value="Delete">
+                        </form>
+                        <a href="/<%= user.id %>">Update</a>
+                    </td>
+                </tr>
+            <% }) %>
+                
+            
+
+        </tbody>
+    </table>
+</body>
+</html>
