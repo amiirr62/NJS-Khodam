@@ -2,14 +2,12 @@ const express = require('express')
 let User = require('../user')
 const { body, validationResult } = require('express-validator')
 const router = express.Router()
-const flash = require('connect-flash')
 
 
 
-router.get('/',((req,res)=>{
-    
-    console.log(req.flash('errors'))
-    res.render('users',{User:User, errors:req.flash('errors')})
+router.get('/',(function(req,res){
+   
+    res.render('users',{User:User, title:'All Users', errors:req.flash('errors')})
     
 }))
 
@@ -23,15 +21,17 @@ router.get('/:id',((req,res)=>{
     
 }))
 
-router.post('/',[body('username','Not a Valid Email!!').isEmail(),body('password','Minimum length is 5 words.').isLength({ min: 5 })],((req,res)=>{
+router.post('/',[body('username','Not a Valid Email!!').isEmail(),
+                 body('password','Minimum length is 5 words.').isLength({ min: 5 })], (function(req,res){
     
     const errors = validationResult(req);
+
     if (!errors.isEmpty()) {
         
-        req.flash('errors',errors.array())
+        req.flash('errors', errors.array())
         
         return res.redirect('/')
-      
+ 
     }
     
     req.body.id = parseInt(req.body.id )

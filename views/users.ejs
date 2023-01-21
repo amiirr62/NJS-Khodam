@@ -5,21 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title><%= title %></title>
 </head>
 <body>
     <H1>See ALL Users</H1>
-<div>
+     
+<% if(errors.length){ %>
     <div>
-        <% if(errors.length){ %>
-            <% errors.forEach(err =>{ %>
-                <ul>
-                    <li><%= err.msg %></li>
-                </ul>
+        <ul>
+            
+            <% errors.forEach(err => { %>
+                <li  class="errors"> <%= err.msg %> </li>
             <% }) %>
-        <% } %>
-      
+            
+        </ul>
     </div>
+<% } %>
+
+    
+
     <form action="/" method="POST">
         <input type="number" placeholder="id" name="id">
         <input type="text" placeholder="name" name="name">

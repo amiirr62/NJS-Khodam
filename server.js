@@ -20,7 +20,8 @@ app.use(session({
     secret: 'doiuhibdshbyeg54sgah67t76-0gd2yg',
     resave: true,
     saveUninitialized: true,
-    cookie: { secure: true }
+    
+    
   }))
 app.use(flash())
 
