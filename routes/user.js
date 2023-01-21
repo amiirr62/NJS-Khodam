@@ -19,7 +19,7 @@ router.get('/:id',((req,res)=>{
                             return usr
                         }
                     }) 
-   res.render('user',{user:user})   
+   res.render('user',{User:User})   
     
 }))
 
