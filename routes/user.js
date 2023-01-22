@@ -17,18 +17,14 @@ router.get('/', async (req,res)=>{
     
 })
 
-/* router.get('/:id',(async(req,res)=>{
-    let user = await User.find(usr => { if(usr._id == req.body.id)
-                        {
-                            return usr
-                        }
-                    }) 
+ router.get('/:id',(async(req,res)=>{
+    let user = await User.findById({_id : req.params.id})
    res.render('user',{user:user})   
 
    
    
     
-})) */
+})) 
 
 router.post('/',[body('username','Not a Valid Email!!').isEmail(),
                  body('password','Minimum length is 5 words.').isLength({ min: 1 })], (async function(req,res){
@@ -61,28 +57,19 @@ router.post('/',[body('username','Not a Valid Email!!').isEmail(),
    }
 ))
 
-/* router.put('/:id',(req,res)=>{
-        User = User.map(usr => {
-        if(usr._id == req.params.id){
-            req.body.id = parseInt(req.body.id)
-            return req.body
-        }else{
-            return usr
-        }
-    })
+router.put('/:id',async(req,res)=>{
+        await User.updateMany({_id : req.params.id}, {$set : req.body})
+
     req.flash('message','User successfully updated!!') 
+    
     return res.redirect('/')
 })
 
-router.delete('/:id',(req,res)=>{
-    User = User.filter(usr => {
-        if(usr.id != req.params.id){
-            return usr
-        }
-    })
+router.delete('/:id',async(req,res)=>{
+    await User.deleteOne({_id : req.params.id})
     req.flash('message','User successfully Deleted!!') 
     return res.redirect('/')
-}) */
+}) 
 
 
 module.exports = router
