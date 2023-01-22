@@ -7,17 +7,19 @@ const router = express.Router()
 
 router.get('/',(function(req,res){
    
-    res.render('users',{User:User, title:'All Users', errors:req.flash('errors')})
+    res.render('users',{User:User, title:'All Users', 
+                errors:req.flash('errors'),
+                message:req.flash('message')})
     
 }))
 
 router.get('/:id',((req,res)=>{
-     let user = User.find(usr => {
+    let user =  User.find(usr => {
                         if(usr.id == req.params.id){
                             return usr
                         }
                     }) 
-   res.render('user',{User:User})   
+   res.render('user',{user:user})   
     
 }))
 
@@ -35,7 +37,8 @@ router.post('/',[body('username','Not a Valid Email!!').isEmail(),
     }
     
     req.body.id = parseInt(req.body.id )
-    User.push(req.body) 
+    User.push(req.body)
+    req.flash('message','User successfully created!!') 
     
     return res.redirect('/')
    }
@@ -50,6 +53,7 @@ router.put('/:id',(req,res)=>{
             return usr
         }
     })
+    req.flash('message','User successfully updated!!') 
     return res.redirect('/')
 })
 
@@ -59,6 +63,7 @@ router.delete('/:id',(req,res)=>{
             return usr
         }
     })
+    req.flash('message','User successfully Deleted!!') 
     return res.redirect('/')
 })
 

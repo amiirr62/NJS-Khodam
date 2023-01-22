@@ -10,14 +10,14 @@
 <body>
     <a href="/">Back</a>
     
-    <H1><%=User.name %></H1>
+    <h1><%= user.id %> , <%= user.name %></h1>
     
-        <form action="/<%= User.id %>?method=PUT" method="POST">
-            <input type="number" placeholder="id" name="id" value="<%= User.id %>">
-            <input type="text" placeholder="name" name="name" value="<%= User.name %>">
-            <input type="text" placeholder="username" name="username" value="<%= User.username %>">
-            <input type="text" placeholder="password" name="password" value="<%= User.password %>">
-            <input type="number" placeholder="age" name="age" value="<%= User.age %>">
+        <form action="/<%= user.id %>?method=PUT" method="POST">
+            <input type="number" placeholder="id" name="id" value="<%= user.id %>">
+            <input type="text" placeholder="name" name="name" value="<%= user.name %>">
+            <input type="text" placeholder="username" name="username" value="<%= user.username %>">
+            <input type="text" placeholder="password" name="password" value="<%= user.password %>">
+            <input type="number" placeholder="age" name="age" value="<%= user.age %>">
             <input type="submit" value="Update">
                   
         </form>
