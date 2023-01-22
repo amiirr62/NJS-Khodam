@@ -3,10 +3,13 @@ const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const flash = require('connect-flash')
+const mongoose = require('mongoose')
 
 
 
 const app = express()
+mongoose.connect('mongodb://127.0.0.1:27017/NJS-Khodam').then(() => console.log('Connected!'))
+mongoose.set('strictQuery', false)
 app.use(express.static(__dirname + '/public'))
 global.config = require('./config')
 app.use(express.urlencoded({extended:false}))

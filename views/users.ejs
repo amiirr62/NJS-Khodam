@@ -29,7 +29,7 @@
     
 
     <form action="/" method="POST">
-        <input type="number" placeholder="id" name="id">
+        <input type="number" placeholder="id" name="_id">
         <input type="text" placeholder="name" name="name">
         <input type="text" placeholder="username" name="username">
         <input type="text" placeholder="password" name="password">
@@ -51,7 +51,7 @@
             </tr>
         </thead>
         <tbody>
-            <% User.forEach(user => { %>
+            <% users.forEach(user => { %>
                 <tr>
                     <td><%= user.id %></td>
                     <td><%= user.name %></td>

@@ -1,30 +1,37 @@
 const express = require('express')
-let User = require('../user')
+const User = require('../models/user')
 const { body, validationResult } = require('express-validator')
 const router = express.Router()
 
 
 
-router.get('/',(function(req,res){
-   
-    res.render('users',{User:User, title:'All Users', 
-                errors:req.flash('errors'),
-                message:req.flash('message')})
-    
-}))
+router.get('/', async (req,res)=>{
 
-router.get('/:id',((req,res)=>{
-    let user =  User.find(usr => {
-                        if(usr.id == req.params.id){
+
+    let users = await User.find({})
+    res.render('users' , {users : users , 
+                          title : 'The Entire Users', 
+                          errors : req.flash('errors') , 
+                          message : req.flash('message')}
+                        )
+    
+})
+
+/* router.get('/:id',(async(req,res)=>{
+    let user = await User.find(usr => { if(usr._id == req.body.id)
+                        {
                             return usr
                         }
                     }) 
    res.render('user',{user:user})   
+
+   
+   
     
-}))
+})) */
 
 router.post('/',[body('username','Not a Valid Email!!').isEmail(),
-                 body('password','Minimum length is 5 words.').isLength({ min: 5 })], (function(req,res){
+                 body('password','Minimum length is 5 words.').isLength({ min: 1 })], (async function(req,res){
     
     const errors = validationResult(req);
 
@@ -37,16 +44,26 @@ router.post('/',[body('username','Not a Valid Email!!').isEmail(),
     }
     
     req.body.id = parseInt(req.body.id )
-    User.push(req.body)
+    
+    let newUser = new User ({
+        
+        name:req.body.name,
+        username:req.body.username,
+        password:req.body.password,
+        age:req.body.age,
+
+    })
+    await newUser.save()
+
     req.flash('message','User successfully created!!') 
     
     return res.redirect('/')
    }
 ))
 
-router.put('/:id',(req,res)=>{
+/* router.put('/:id',(req,res)=>{
         User = User.map(usr => {
-        if(usr.id == req.params.id){
+        if(usr._id == req.params.id){
             req.body.id = parseInt(req.body.id)
             return req.body
         }else{
@@ -65,7 +82,7 @@ router.delete('/:id',(req,res)=>{
     })
     req.flash('message','User successfully Deleted!!') 
     return res.redirect('/')
-})
+}) */
 
 
 module.exports = router
