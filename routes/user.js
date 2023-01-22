@@ -21,9 +21,7 @@ router.get('/', async (req,res)=>{
     let user = await User.findById({_id : req.params.id})
    res.render('user',{user:user})   
 
-   
-   
-    
+      
 })) 
 
 router.post('/',[body('username','Not a Valid Email!!').isEmail(),
