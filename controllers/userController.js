@@ -11,8 +11,7 @@ class UserController extends controller{
         res.render('users' , {users : users , 
                               title : 'The Entire Users', 
                               errors : req.flash('errors') , 
-                              message : req.flash('message')}
-                        )
+                              message : req.flash('message')})
     }
 
     async seeOneUser(req,res){

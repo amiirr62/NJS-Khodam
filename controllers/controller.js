@@ -1,5 +1,10 @@
+
+
+
+
 class Controller {
     constructor(){
+        this.name='amir'     
 
     }
 
