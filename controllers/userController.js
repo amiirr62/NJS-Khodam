@@ -1,9 +1,11 @@
+const express = require('express')
 let controller = require('./controller')
 const User = require('../models/user')
 const { body, validationResult } = require('express-validator')
-
+const app = express()
 
 class UserController extends controller{
+    
     async getAllUsers(req,res){
 
         let users = await User.find({})

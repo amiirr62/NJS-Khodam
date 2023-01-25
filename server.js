@@ -28,9 +28,7 @@ app.use(session({
   }))
 app.use(flash())
 
-
-
-app.use('/',require('./routes/user'))
+app.use('/',require('./routes/01-index'))
 
 app.listen(config.port, ()=>{
     console.log(`Server is running on port ${config.port}`)
