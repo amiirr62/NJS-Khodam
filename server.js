@@ -30,7 +30,7 @@ app.use(flash())
 
 //mymes is available for allviews thanks to res.locals
 app.use((req,res,next)=>{
-  res.locals = {mymes : 'Amir res.locals'}
+  res.locals = {errors : req.flash('errors')}
   next()
 })
 

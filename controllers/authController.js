@@ -6,10 +6,10 @@ const { body, validationResult } = require('express-validator')
 
 class authController extends controller{
 
-    
+
     async registerForm(req,res,next){
         try {
-            return res.render('auth/register',{errors : req.flash('errors')})
+            return res.render('auth/register')
         } catch (err) {
             
         }
@@ -18,7 +18,7 @@ class authController extends controller{
 
     async loginForm(req,res,next){
         try {
-            return res.render('auth/login',{errors : req.flash('errors')})
+            return res.render('auth/login')
         } catch (err) {
             
         }
