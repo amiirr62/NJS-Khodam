@@ -8,6 +8,9 @@ const router = express.Router()
 
 router.use('/',require('./user'))
 
+router.use('/auth', require('./auth'))
+
+
 
 
 router.all('*', async(req,res,next)=>{
@@ -20,9 +23,6 @@ router.all('*', async(req,res,next)=>{
         next(err)
     }
 })
-
-
-
 //Method to Manage All Errors here
 
 router.use(async(err,req,res,next)=>{

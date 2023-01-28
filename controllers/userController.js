@@ -38,17 +38,17 @@ class UserController extends controller{
         try {
             const errors = validationResult(req);
 
-    if (!errors.isEmpty()) {
+            if (!errors.isEmpty()) {
         
-        req.flash('errors', errors.array())
-        
-        return res.redirect('/')
+            req.flash('errors', errors.array())
+            
+            return res.redirect('/')
  
     }
     
     req.body.id = parseInt(req.body.id )
     
-    let newUser = new User ({
+        let newUser = new User ({
         
         name:req.body.name,
         username:req.body.username,
