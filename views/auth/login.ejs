@@ -7,17 +7,7 @@
     <title>Login</title>
 </head>
 <body>
-    <% if(errors.length){ %>
-        <div>
-            <ul>
-                
-                <% errors.forEach(err => { %>
-                    <li  class="errors"> <%= err.msg %> </li>
-                <% }) %>
-                
-            </ul>
-        </div>
-    <% } %>
+    <%- include('../components/validationError') -%>
     
   
     <form action="/auth/login" method="post">
