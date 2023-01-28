@@ -28,7 +28,18 @@ app.use(session({
   }))
 app.use(flash())
 
+//mymes is available for allviews thanks to res.locals
+app.use((req,res,next)=>{
+  res.locals = {mymes : 'Amir res.locals'}
+  next()
+})
+
+//Passing to 01-index.js for routing table
 app.use('/',require('./routes/01-index'))
+
+
+
+
 
 app.listen(config.port, ()=>{
     console.log(`Server is running on port ${config.port}`)
