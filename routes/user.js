@@ -8,15 +8,15 @@ const userController = require('../controllers/userController')
 const userValidator = require('../validators/userValidator')
 
 
-router.get('/', userController.getAllUsers.bind(userController))
+router.get('/', userController.getAllUsers)
 
-router.get('/:id',userController.seeOneUser.bind(userController)) 
+router.get('/:id',userController.seeOneUser) 
 
-router.post('/',userValidator.handle(),userController.CreateUser.bind(userController))
+router.post('/',userValidator.handle(),userController.CreateUser)
 
-router.put('/:id',userController.UpdateUser.bind(userController))
+router.put('/:id',userController.UpdateUser)
 
-router.delete('/:id',userController.DeleteUser.bind(userController)) 
+router.delete('/:id',userController.DeleteUser) 
 
 
 module.exports = router

@@ -1,10 +1,10 @@
 const express = require('express')
-let controller = require('./controller')
+
 const User = require('../models/user')
 const { body, validationResult } = require('express-validator')
 const app = express()
 
-class UserController extends controller{
+class UserController{
     
     async getAllUsers(req,res,next){
 
