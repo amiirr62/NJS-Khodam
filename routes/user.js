@@ -8,9 +8,9 @@ const userController = require('../controllers/userController')
 const userValidator = require('../validators/userValidator')
 
 
-router.get('/', userController.getAllUsers)
+router.get('/user', userController.getAllUsers)
 
-router.get('/:id',userController.seeOneUser) 
+router.get('/user/:id',userController.seeOneUser) 
 
 router.post('/',userValidator.handle(),userController.CreateUser)
 
