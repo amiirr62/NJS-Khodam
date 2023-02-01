@@ -10,6 +10,14 @@
 </head>
 <body>
     <H1>See ALL Users</H1>
+
+    <% if (req.isAuthenticated()){ %>
+        <a href="/dashboard">Dashboard</a>
+    <% }else{ %>
+        <a href="/auth/login">Login</a>
+    <% } %>
+
+
      
 <% if(errors.length){ %>
     <div>

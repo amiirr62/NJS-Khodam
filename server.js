@@ -41,9 +41,9 @@ app.use(passport.session())
 
 
 
-//mymes is available for allviews thanks to res.locals
+
 app.use((req,res,next)=>{
-  res.locals = {errors : req.flash('errors')}
+  res.locals = {errors : req.flash('errors'), req }     ///We access to req in all views
   next()
 })
 
