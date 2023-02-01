@@ -2,7 +2,7 @@
 
 const User = require('../models/user')
 const { body, validationResult } = require('express-validator')
-
+const passport = require('passport')
 
 class authController {
 
@@ -35,7 +35,13 @@ class authController {
             
             return res.redirect('/auth/register' )
         }
-           console.log('register posted...')
+           
+        passport.authenticate('local.register',{
+            successRedirect : '/dashboard',
+            failureRedirect : '/auth/register',
+            failureFlash : true
+
+          })(req,res,next)
             
         
         } catch (err) {
@@ -54,7 +60,13 @@ class authController {
             
             return res.redirect('/auth/login')
         }
-           console.log('login posted...')
+            passport.authenticate('local.login', (err,user)=>{
+                if(!user) return res.redirect('/auth/login')
+
+            req.logIn(user, err=>{
+              return res.redirect('/dashboard')
+            })
+          })(req,res,next)
             
         
         } catch (err) {

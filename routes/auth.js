@@ -8,6 +8,16 @@ const authController = require('../controllers/authController')
 const authValidator = require('../validators/authValidator')
 
 
+//*********** Dashboard and Login Authentication **********************
+
+router.use((req,res,next)=>{
+    if(req.isAuthenticated()){
+        return res.redirect('/dashboard')
+    }
+    next()
+})
+//******************************************************************* */
+
 router.get('/login', authController.loginForm)
 router.get('/register', authController.registerForm)
 
