@@ -29,7 +29,7 @@
 
     
 
-    <form action="/" method="POST">
+    <form action="/user" method="POST">
         <input type="text" placeholder="id" name="_id">
         <input type="text" placeholder="name" name="name">
         <input type="text" placeholder="username" name="username">
@@ -60,10 +60,10 @@
                     <td><%= user.password %></td>
                     <td><%= user.age %></td>
                     <td>
-                        <form action="/<%= user.id %>?method=DELETE" method="POST" >
+                        <form action="/user/<%= user.id %>?method=DELETE" method="POST" >
                             <input type="submit" value="Delete">
                         </form>
-                        <a href="/<%= user.id %>">Update</a>
+                        <a href="/user/<%= user.id %>">Update</a>
                     </td>
                 </tr>
             <% }) %>

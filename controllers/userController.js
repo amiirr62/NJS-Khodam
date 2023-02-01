@@ -42,7 +42,7 @@ class UserController{
         
             req.flash('errors', errors.array())
             
-            return res.redirect('/')
+            return res.redirect('/user')
  
     }
     
@@ -60,7 +60,7 @@ class UserController{
 
     req.flash('message','User successfully created!!') 
     
-    return res.redirect('/')
+    return res.redirect('/user')
         } catch (err) {
             next(err)
         }
@@ -74,7 +74,7 @@ class UserController{
 
         req.flash('message','User successfully updated!!') 
         
-        return res.redirect('/')
+        return res.redirect('/user')
       } catch (err) {
         next(err)
       }
@@ -86,7 +86,7 @@ class UserController{
     try {
         await User.deleteOne({_id : req.params.id})
         req.flash('message','User successfully Deleted!!') 
-        return res.redirect('/')
+        return res.redirect('/user')
     } catch (err) {
         next(err)
     }

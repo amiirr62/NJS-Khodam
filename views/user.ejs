@@ -9,12 +9,12 @@
     <title>Index</title>
 </head>
 <body>
-    <a href="/">Back</a>
+    <a href="/user">Back</a>
     
     <h1> <%= user.name %></h1>
     
     
-        <form action="<%= user.id %>?method=PUT" method="POST">
+        <form action="/user/<%= user.id %>?method=PUT" method="POST">
             <input type="text" placeholder="id" name="id" value="<%= user.id %>">
             <input type="text" placeholder="name" name="name" value="<%= user.name %>">
             <input type="text" placeholder="username" name="username" value="<%= user.username %>">

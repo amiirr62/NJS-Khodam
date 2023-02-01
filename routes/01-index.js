@@ -6,8 +6,7 @@ const router = express.Router()
 const User = require('../models/user')
 
 
-router.use('/',require('./user'))
-
+router.use('/user',require('./user'))
 router.use('/auth', require('./auth'))
 router.use('/dashboard', require('./dashboard'))
 
