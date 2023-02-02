@@ -12,7 +12,7 @@ router.get('/', userController.getAllUsers)
 
 router.get('/:id',userController.seeOneUser) 
 
-router.post('/',userValidator.handle(),userController.CreateUser)
+router.post('/',userValidator.handle(),userController.createUser)
 
 router.put('/:id',userController.UpdateUser)
 

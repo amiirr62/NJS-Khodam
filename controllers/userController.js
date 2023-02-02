@@ -33,7 +33,7 @@ class UserController{
 
     }
 
-    async CreateUser(req,res,next){
+    async createUser(req,res,next){
 
         try {
             const errors = validationResult(req);

@@ -1,7 +1,8 @@
 const passport = require('passport')
-
 const localStrategy = require('passport-local').Strategy
 const User = require('../models/user')
+var bcrypt = require('bcryptjs');
+
 
 //Coding User's ID and store in Browser
 passport.serializeUser((user,done)=>{
@@ -33,7 +34,7 @@ passport.use("local.register", new localStrategy(
             const newUser = new User({
                 name : req.body.name,
                 username: req.body.email,
-                password: req.body.password, 
+                password: bcrypt.hashSync( req.body.password, 8),
             })
 
             await newUser.save()
@@ -55,7 +56,7 @@ passport.use("local.login", new localStrategy(
    try {
     let user = await User.findOne({username : req.body.email})
 
-    if(!user || user.password != req.body.password ){
+    if(!user || !bcrypt.compareSync(req.body.password, user.password) ){
         return done(null, false, req.flash('errors','No users have been found!!! '))
     }
 

@@ -54,7 +54,6 @@
                 <th>id</th>
                 <th>name</th>
                 <th>username</th>
-                <th>password</th>
                 <th>age</th>
                 <th>operation</th>
             </tr>
@@ -65,7 +64,6 @@
                     <td><%= user.id %></td>
                     <td><%= user.name %></td>
                     <td><%= user.username %></td>
-                    <td><%= user.password %></td>
                     <td><%= user.age %></td>
                     <td>
                         <form action="/user/<%= user.id %>?method=DELETE" method="POST" >
