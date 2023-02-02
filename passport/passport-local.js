@@ -60,7 +60,7 @@ passport.use("local.login", new localStrategy(
         return done(null, false, req.flash('errors','No users have been found!!! '))
     }
 
-    done(null,user)
+    done(null,user) 
 
    } catch (error) {
     return done(error, false, {message :  error})
