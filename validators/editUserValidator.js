@@ -11,7 +11,7 @@ class editUserValidator extends validator {
                         return
                     }
                     if(!['.jpg','.jpeg','.png','.tif'].includes(path.extname(value))){
-                        throw new Error('Your photo extension in not Valid!!!')
+                        throw new Error('Photo Extension in not Valid!!!')
                     }
                
                 })
