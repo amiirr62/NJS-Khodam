@@ -8,7 +8,11 @@
 </head>
 <body>
     <%- include('../components/validationError') -%>
-    
+    <a href="/">HomePage || </a>
+    <a href="/user">Users || </a>
+    <a href="/auth/login">Login || </a>
+
+<center>
    <form action="/auth/register" method="post">
         <input type="text" placeholder="name" name="name">
         <input type="text" placeholder="email" name="email">
@@ -16,5 +20,7 @@
         <%- recaptcha %>
         <input type="submit" value="Register">
    </form>
+</center>
+
 </body>
 </html>

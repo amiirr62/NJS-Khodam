@@ -8,13 +8,17 @@
 </head>
 <body>
     <%- include('../components/validationError') -%>
-    
-  
+    <a href="/">HomePage || </a>
+    <a href="/user">Users || </a>
+    <a href="/auth/register">Register || </a>
+
+<center>
     <form action="/auth/login" method="post">
         <input type="text" placeholder="email" name="email">
         <input type="text" placeholder="password" name="password">
         <%- recaptcha %>
         <input type="submit" value="Sign in">
    </form>
+</center>
 </body>
 </html>
