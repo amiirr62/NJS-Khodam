@@ -7,7 +7,14 @@
 <body>
     <%- include('../components/validationError') -%>
 
-    <a href="/logout">logout</a>
+    <a href="/logout">logout || </a>
+    <a href="/">HomePage || </a>
+    <a href="/user">Users || </a>
+    <a href="/auth/login">Login || </a>
+    <a href="/auth/register">Register </a>
+
+
+
     <h1>Hi <%= req.user.name %></h1>
     <h1>Welcome To Daaashboardddd</h1>
     <img src="<%= req.user.img %>" style="width: 100px; border-radius : 50%">
