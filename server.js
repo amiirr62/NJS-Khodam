@@ -10,6 +10,7 @@ const MongoStore = require('connect-mongo')
 
 
 const app = express()
+
 mongoose.connect('mongodb://127.0.0.1:27017/NJS-Khodam').then(() => console.log('Connected!'))
 mongoose.set('strictQuery', false)
 app.use(express.static(__dirname + '/public'))
